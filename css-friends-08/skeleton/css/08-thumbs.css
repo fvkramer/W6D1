@@ -1,1 +1,18 @@
 /* PHASE 8: Thumbs */
+.friend-nav {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.friend-nav > li:nth-child(3n - 1) {
+  margin: 0 10px 10px 10px;
+}
+
+.friend-nav li {
+  float: left;
+
+}
+
+.thumb {
+  
+}
