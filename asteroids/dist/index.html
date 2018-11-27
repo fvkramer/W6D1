@@ -4,9 +4,40 @@
     <script src="./main.js" charset="utf-8"></script>
     <meta charset="utf-8">
     <title></title>
+    <style>
+      .img {
+        position:absolute;
+        z-index: -1;
+        right: 366px;
+        top: 70px;
+
+      }
+
+      #container{
+        display:inline-block;
+        width:1500px;
+        height:1500px;
+        margin: 0 auto;
+        background: black;
+        position:relative;
+        border:5px solid black;
+        border-radius: 10px;
+        box-shadow: 0 5px 50px #333}
+
+      .game-canvas{
+        position:relative;
+        z-index:20;
+      }
+    </style>
   </head>
+
   <body>
+
     <h1>Filipp Succs</h1>
-    <canvas id="game-canvas" width="900" height="900"></canvas>
+    <div class="container">
+      <canvas id="game-canvas" width="1500" height="1500"></canvas>
+      <img class="img" src="https://media1.giphy.com/media/3o7buijTqhjxjbEqjK/giphy.gif?cid=3640f6095bfc8a624b52564f770a7cd9" alt="thing" width="1500" height="1500"/>
+    </div>
   </body>
+
 </html>

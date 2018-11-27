@@ -13,11 +13,10 @@ function Asteroid(options) {
 
   let params = {
     pos: options.pos,
-    vel: Util.randomVec(Math.random() * 100),
+    vel: Util.randomVec(Math.random() * 7),
     radius: this.radius,
     color: this.color
   };
-  console.log(params);
 
   MovingObject.call(this, params);
 }
