@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const Util = __webpack_require__(/*! ./util */ \"./src/util.js\");\nconst MovingObject = __webpack_require__(/*! ./moving_object */ \"./src/moving_object.js\");\n\n\nconst DEFAULTS = {\n  COLOR: \"pink\",\n  RADIUS: 50\n};\n\nfunction Asteroid(options) {\n  this.color = DEFAULTS.COLOR;\n  this.radius = DEFAULTS.RADIUS;\n\n  let params = {\n    pos: options.pos,\n    vel: Util.randomVec(Math.random() * 15),\n    radius: this.radius,\n    color: this.color,\n    game: options.game\n  };\n\n  MovingObject.call(this, params);\n}\n\nUtil.inherits(Asteroid, MovingObject);\n\n\nmodule.exports = Asteroid;\n\n\n//# sourceURL=webpack:///./src/asteroid.js?");
+eval("const Util = __webpack_require__(/*! ./util */ \"./src/util.js\");\nconst MovingObject = __webpack_require__(/*! ./moving_object */ \"./src/moving_object.js\");\n\n\nconst DEFAULTS = {\n  COLOR: \"pink\",\n  RADIUS: 50\n};\n\nfunction Asteroid(options) {\n  this.color = DEFAULTS.COLOR;\n  this.radius = DEFAULTS.RADIUS;\n\n  let params = {\n    pos: options.pos,\n    vel: Util.randomVec(Math.random() * 1500),\n    radius: this.radius,\n    color: this.color,\n    game: options.game\n  };\n\n  MovingObject.call(this, params);\n}\n\nUtil.inherits(Asteroid, MovingObject);\n\n\nmodule.exports = Asteroid;\n\n\n//# sourceURL=webpack:///./src/asteroid.js?");
 
 /***/ }),
 
@@ -137,7 +137,7 @@ eval("const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("function MovingObject (options) {\n  this.pos = options.pos;\n  this.vel = options.vel;\n  this.radius = options.radius;\n  this.color = options.color;\n  this.game = options.game;\n}\n\n\n\nMovingObject.prototype.draw = function (ctx) {\n  ctx.fillStyle = this.color;\n  ctx.beginPath();\n\n  ctx.arc(\n    this.pos[0],\n    this.pos[1],\n    this.radius,\n    0,\n    2 * Math.PI\n  );\n\n  ctx.fill();\n};\n\nMovingObject.prototype.move = function() {\n  this.pos[0] += this.vel[0];\n  this.pos[1] += this.vel[1];\n  let res = this.game.wrap(this.pos);\n  this.pos[0] = res[0];\n  this.pos[1] = res[1];\n};\n\nmodule.exports = MovingObject;\n\n\n//# sourceURL=webpack:///./src/moving_object.js?");
+eval("function MovingObject (options) {\n  this.pos = options.pos;\n  this.vel = options.vel;\n  this.radius = options.radius;\n  this.color = options.color;\n  this.game = options.game;\n}\n\n\n\nMovingObject.prototype.draw = function (ctx) {\n  ctx.fillStyle = this.color;\n  ctx.beginPath();\n\n  ctx.arc(\n    this.pos[0],\n    this.pos[1],\n    this.radius,\n    0,\n    2 * Math.PI\n  );\n\n  ctx.fill();\n};\n\n\n\nMovingObject.prototype.isCollideWith = function(otherObject) {\n  let selfX = this.pos[0];\n  let selfY = this.pos[1];\n  let otherX = otherObject.pos[0];\n  let otherY = otherObject.pos[1];\n\n  let dist = Math.sqrt((otherX - selfX)*(otherX - selfX) + (selfY - otherY)*(selfY - otherY));\n  if (dist <= this.radius * 2) {\n    return true;\n  }\n};\n\n\nMovingObject.prototype.move = function() {\n  this.pos[0] += this.vel[0];\n  this.pos[1] += this.vel[1];\n  let res = this.game.wrap(this.pos);\n  this.pos[0] = res[0];\n  this.pos[1] = res[1];\n};\n\nmodule.exports = MovingObject;\n\n\n//# sourceURL=webpack:///./src/moving_object.js?");
 
 /***/ }),
 

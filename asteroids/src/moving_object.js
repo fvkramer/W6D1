@@ -23,6 +23,21 @@ MovingObject.prototype.draw = function (ctx) {
   ctx.fill();
 };
 
+
+
+MovingObject.prototype.isCollideWith = function(otherObject) {
+  let selfX = this.pos[0];
+  let selfY = this.pos[1];
+  let otherX = otherObject.pos[0];
+  let otherY = otherObject.pos[1];
+
+  let dist = Math.sqrt((otherX - selfX)*(otherX - selfX) + (selfY - otherY)*(selfY - otherY));
+  if (dist <= this.radius * 2) {
+    return true;
+  }
+};
+
+
 MovingObject.prototype.move = function() {
   this.pos[0] += this.vel[0];
   this.pos[1] += this.vel[1];
