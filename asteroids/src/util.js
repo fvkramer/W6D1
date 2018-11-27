@@ -18,7 +18,17 @@ const Util = {
     // Scale the length of a vector by the given amount.
     scale(vec, m) {
       return [vec[0] * m, vec[1] * m];
+    },
+
+  wrap(current, max) {
+    if (current < 0) {
+      return max + current;
+    } else if (current > max) {
+      return (0 + (current % max));
+    } else {
+      return current;
     }
+  }
 };
 
 

@@ -8,9 +8,11 @@ document.addEventListener("DOMContentLoaded", function() {
   const canvas = document.getElementById("game-canvas");
   const ctx = canvas.getContext("2d");
 
-  const mo = new MovingObject(
-  { pos: [30, 30], vel: [10, 10], radius: 5, color: "#00FF00"});
   const game = new Game();
+
+  const mo = new MovingObject(
+  { pos: [30, 30], vel: [10, 10], radius: 5, color: "#00FF00", game: game});
+
   // const as = new Asteroid({ pos: [400, 400] });
   mo.draw(ctx);
   // as.draw(ctx);

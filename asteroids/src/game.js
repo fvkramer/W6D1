@@ -1,4 +1,6 @@
 const Asteroid = require("./asteroid");
+const Util = require("./util");
+
 const DEFAULTS = {
   DIM_X: 1500,
   DIM_Y: 1500,
@@ -12,7 +14,7 @@ function Game () {
 
 Game.prototype.addAsteroids = function () {
   for (var i = 0; i < DEFAULTS.NUM_ASTEROIDS; i++) {
-    this.asteroids.push(new Asteroid({ pos: this.randomPosition() }));
+    this.asteroids.push(new Asteroid({ pos: this.randomPosition(), game: this }));
   }
 };
 
@@ -31,6 +33,16 @@ Game.prototype.moveObjects = function () {
   this.asteroids.forEach (el => {
     el.move();
   });
+};
+
+Game.prototype.wrap = function (pos) {
+  let x = pos[0];
+  let y = pos[1];
+
+  let newX = Util.wrap(x, DEFAULTS.DIM_X);
+  let newY = Util.wrap(y, DEFAULTS.DIM_Y);
+
+  return [newX, newY];
 };
 
 
